@@ -1,0 +1,6 @@
+framework module Pods_iTunesArtworkSearcher {
+  umbrella header "Pods-iTunesArtworkSearcher-umbrella.h"
+
+  export *
+  module * { export * }
+}
