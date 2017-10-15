@@ -25,6 +25,11 @@ class ArtworkSearchViewController: UIViewController {
     private let OFFSET: Int = 25
     private var countOfRefreshing: Int = 0
     
+    //For tips animation
+    let transition = TipsAnimator()
+    private var showTipsSwitcher: Bool = true
+    private var tapGestureForDismissingTipWindow: UITapGestureRecognizer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // set this controller as delegate for searchBar
@@ -41,10 +46,13 @@ class ArtworkSearchViewController: UIViewController {
         //for partial downloading
         artworkSearchView.partialDataProviderDelegate = self
         
+        //for tips
+        artworkSearchView.tipsShowerDelegate = self
+        
         //for autoresize album cells after rotation device
         NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
- 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -183,6 +191,42 @@ extension ArtworkSearchViewController: PartialDataProviderDelegate {
         countOfRefreshing += 1
         performSearchForNextPartOfData()
     }
+}
+
+//This extension supports showing tips window
+extension ArtworkSearchViewController: TipsShowerDelegate, UIViewControllerTransitioningDelegate {
+    func showTips() {
+        if showTipsSwitcher {
+            let sB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tipsViewController =  sB.instantiateViewController(withIdentifier: "TipsViewControllerStoryboardID")
+            tapGestureForDismissingTipWindow = UITapGestureRecognizer(target: self, action:#selector(dismissTip))
+            self.artworkSearchView.addGestureRecognizer(tapGestureForDismissingTipWindow!)
+            tipsViewController.transitioningDelegate = self
+            self.present(tipsViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func dismissTip(){
+        self.artworkSearchView.removeGestureRecognizer(tapGestureForDismissingTipWindow!)
+        tapGestureForDismissingTipWindow = nil
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let bottomCell = artworkSearchView.artworkCollectionView.cellForItem(at: IndexPath(row: searches.count - 1, section: 0))
+        transition.originFrame = (bottomCell?.frame)!
+        transition.presenting = true
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.presenting = false
+        if let tipView = dismissed as? TipsViewController {
+            showTipsSwitcher = tipView.showTipsWindowAgain.isOn
+        }
+        return transition
+    }
+    
 }
 
 //This extension for supporting private functions

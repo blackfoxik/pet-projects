@@ -17,6 +17,7 @@ class ArtworkSearchView: UIView, UICollectionViewDelegate {
     let reuseCellIdentifier = Settings.reuseCellIdentifier
     let cellImagePlaceholder = Settings.cellImagePlaceholder
     var partialDataProviderDelegate: PartialDataProviderDelegate?
+    var tipsShowerDelegate: TipsShowerDelegate?
     
     private let sectionInsets = UIEdgeInsets(top: Settings.EdgeInsets.top, left: Settings.EdgeInsets.left, bottom: Settings.EdgeInsets.bottom, right: Settings.EdgeInsets.right)
     
@@ -49,6 +50,10 @@ extension ArtworkSearchView: UICollectionViewDelegateFlowLayout {
     
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) - Settings.TIP_OFFSET_THRESHOLD {
+            tipsShowerDelegate?.showTips()
+        }
+        
         if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) + Settings.OFFSET_THRESHOLD {
             partialDataProviderDelegate?.downloadNextPartOfData()
         }
@@ -74,6 +79,14 @@ protocol PartialDataProviderDelegate {
     func downloadNextPartOfData()
 }
 
+// MARK: - Protocol for showing tips
+/// by this protocol view notify controller that
+/// user almost reach bottom edge and maybe need to get shown tips
+///
+protocol TipsShowerDelegate {
+    func showTips()
+}
+
 extension ArtworkSearchView {
     struct Settings {
         static let reuseCellIdentifier: String = "AlbumCell"
@@ -85,6 +98,7 @@ extension ArtworkSearchView {
             return 3
         }
         static let OFFSET_THRESHOLD: CGFloat = 30
+        static let TIP_OFFSET_THRESHOLD: CGFloat = 150
         struct EdgeInsets {
             static let top: CGFloat = 50.0
             static let left: CGFloat = 20.0

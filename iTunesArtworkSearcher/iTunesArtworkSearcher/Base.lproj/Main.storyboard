@@ -120,6 +120,68 @@
             </objects>
             <point key="canvasLocation" x="341.25" y="-10"/>
         </scene>
+        <!--Tips View Controller-->
+        <scene sceneID="S39-KW-epJ">
+            <objects>
+                <viewController restorationIdentifier="TipsViewControllerRestorationID" storyboardIdentifier="TipsViewControllerStoryboardID" id="WJG-4g-sId" customClass="TipsViewController" customModule="iTunesArtworkSearcher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gcK-Lm-hdV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jsF-b7-gBs">
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="752" text="For more results pull up any bottom album" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB7-Ai-K7r">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ty9-lg-LjX">
+                                        <rect key="frame" x="0.0" y="200" width="320" height="260"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="show this window again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-Yd-ELm">
+                                                <rect key="frame" x="0.0" y="121" width="245.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fbp-Cj-kVL">
+                                                <rect key="frame" x="245.5" y="114.5" width="76.5" height="31"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="showTipWindowAgain" label="show this window again">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ty9-lg-LjX" secondAttribute="bottom" id="8FQ-Ct-cgg"/>
+                                    <constraint firstAttribute="trailing" secondItem="mB7-Ai-K7r" secondAttribute="trailing" id="E5S-mo-OSh"/>
+                                    <constraint firstItem="mB7-Ai-K7r" firstAttribute="top" secondItem="jsF-b7-gBs" secondAttribute="top" id="Zt9-Qt-DxE"/>
+                                    <constraint firstAttribute="trailing" secondItem="ty9-lg-LjX" secondAttribute="trailing" id="jKV-Lk-6Nx"/>
+                                    <constraint firstItem="ty9-lg-LjX" firstAttribute="leading" secondItem="jsF-b7-gBs" secondAttribute="leading" id="kCm-tq-CUg"/>
+                                    <constraint firstItem="mB7-Ai-K7r" firstAttribute="leading" secondItem="jsF-b7-gBs" secondAttribute="leading" id="ltl-2B-UVx"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jsF-b7-gBs" firstAttribute="top" secondItem="Upi-qE-BhG" secondAttribute="top" id="0Aa-4K-AnW"/>
+                            <constraint firstItem="Upi-qE-BhG" firstAttribute="bottom" secondItem="jsF-b7-gBs" secondAttribute="bottom" id="8Ar-Cm-hfJ"/>
+                            <constraint firstItem="jsF-b7-gBs" firstAttribute="leading" secondItem="gcK-Lm-hdV" secondAttribute="leading" id="M33-2b-PEU"/>
+                            <constraint firstAttribute="trailing" secondItem="jsF-b7-gBs" secondAttribute="trailing" id="qE0-wq-kC0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Upi-qE-BhG"/>
+                    </view>
+                    <connections>
+                        <outlet property="showTipsWindowAgain" destination="Fbp-Cj-kVL" id="UkV-il-VNU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CCd-p7-snX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341.25" y="727.5"/>
+        </scene>
         <!--Album Full Information View Controller-->
         <scene sceneID="Fql-l1-s7C">
             <objects>
