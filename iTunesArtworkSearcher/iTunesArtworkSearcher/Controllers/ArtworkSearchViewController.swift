@@ -51,6 +51,7 @@ class ArtworkSearchViewController: UIViewController {
         
         //for autoresize album cells after rotation device
         NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,14 +82,14 @@ extension ArtworkSearchViewController: UISearchBarDelegate {
         if isNewSearch() {
             cleanPreviuosResults()
             //search for albums
-            artworkSearchView.albumsSearchingIndicator.startAnimating()
+            artworkSearchView.albumsSearchingIndicator?.startAnimating()
             performSearchForNextPartOfData()
         }
     }
     
     //This is the 'core' function which uses iTunes API to get albums by search term
     private func performSearchForNextPartOfData() {
-        artworkSearchView.albumsSearchingIndicator.startAnimating()
+        artworkSearchView.albumsSearchingIndicator?.startAnimating()
         let term = self.artworkSearchView.artworkSearchBar.text!
         let queue = DispatchQueue.global(qos: .userInitiated)
         let offset = OFFSET * countOfRefreshing + countOfRefreshing
@@ -111,7 +112,7 @@ extension ArtworkSearchViewController: UISearchBarDelegate {
                         
                         if currentPartOfAlbums.isEmpty {
                             self.notifyUser()
-                            self.artworkSearchView.albumsSearchingIndicator.stopAnimating()
+                            self.artworkSearchView.albumsSearchingIndicator?.stopAnimating()
                             return
                         }
                         currentPartOfAlbums.sort(by: { return $0.collectionName! < $1.collectionName!})
@@ -121,7 +122,7 @@ extension ArtworkSearchViewController: UISearchBarDelegate {
                         self.searches.insert(contentsOf: currentPartOfAlbums, at: self.searches.count)
                         //insert new albums into CollectionView
                         self.artworkSearchView.artworkCollectionView.insertItems(at: indexes)
-                        self.artworkSearchView.albumsSearchingIndicator.stopAnimating()
+                        self.artworkSearchView.albumsSearchingIndicator?.stopAnimating()
                         self.updateResultsInfo()
                     }
                 }
@@ -183,6 +184,20 @@ extension ArtworkSearchViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionFooter:
+            if let viewDownloadingIndicator = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DownloadingIndicatorReusableView", for: indexPath) as? DownloadingIndicatorReusableView {
+                artworkSearchView.albumsSearchingIndicator = viewDownloadingIndicator.albumsSearchingIndicator
+                return viewDownloadingIndicator
+            } else {
+               assert(false, "Unexpected element kind")
+            }
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
+    
 }
 
 //This extension supports receiving calls for next downloading part of data from view
@@ -234,9 +249,7 @@ extension ArtworkSearchViewController {
     
     //This function is called when device was rotated (for autoresize album cells)
     @objc private func rotated() {
-        if !transition.presenting {
-            //artworkSearchView.artworkCollectionView.reloadData()
-        }
+        artworkSearchView.artworkCollectionView.reloadData()
     }
     
     //This fuction checks whether is search new or not
@@ -362,7 +375,7 @@ extension ArtworkSearchViewController {
                                         //self.searches = Album.getAlbumsWithAsyncImagesDownloadingFrom(iTunesResult: result)
                                         //function sort alphabetically wasn't founded in iTunes API (only popularity and recent)
                                         self.searches.sort(by: { return $0.collectionName! < $1.collectionName!})
-                                        self.artworkSearchView.albumsSearchingIndicator.stopAnimating()
+                                        self.artworkSearchView.albumsSearchingIndicator?.stopAnimating()
                                         self.artworkSearchView.artworkCollectionView.reloadData()
                                         self.updateResultsInfo()
                                     }

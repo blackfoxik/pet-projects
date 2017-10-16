@@ -27,8 +27,6 @@ class TipsViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         DispatchQueue.main.async {
             self.view.frame.size = self.sizeWithScaleFactor(for: size)
-            //self.view.center = CGPoint(x: size.width / 2, y: size.height / 2)
-            let sv = self.view.superview!
             self.view.center = (self.view.superview?.center)!
         }
     }

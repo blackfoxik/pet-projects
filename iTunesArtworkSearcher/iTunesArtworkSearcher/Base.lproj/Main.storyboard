@@ -34,7 +34,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L4s-lh-o59">
                                     <size key="itemSize" width="148" height="161"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -84,29 +84,40 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DownloadingIndicatorReusableView" id="2HF-PX-AEp" customClass="DownloadingIndicatorReusableView" customModule="iTunesArtworkSearcher" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="161" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HOf-0P-S94">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                            <color key="color" red="0.1684602613" green="0.65576740499999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="HOf-0P-S94" secondAttribute="bottom" id="7cI-rw-S0s"/>
+                                        <constraint firstItem="HOf-0P-S94" firstAttribute="top" secondItem="2HF-PX-AEp" secondAttribute="top" id="ZPh-ww-Cms"/>
+                                        <constraint firstAttribute="trailing" secondItem="HOf-0P-S94" secondAttribute="trailing" id="sjF-67-tui"/>
+                                        <constraint firstItem="HOf-0P-S94" firstAttribute="leading" secondItem="2HF-PX-AEp" secondAttribute="leading" id="wWd-Ee-15R"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="albumsSearchingIndicator" destination="HOf-0P-S94" id="gOl-Zi-FsZ"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HOf-0P-S94">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                                <color key="color" red="0.1684602613" green="0.65576740499999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YU5-6P-bnz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dmj-LZ-YUU"/>
                             <constraint firstItem="W9s-zv-hC4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ESC-wV-ylx"/>
-                            <constraint firstItem="HOf-0P-S94" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MhH-Sa-k1n"/>
                             <constraint firstItem="W9s-zv-hC4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SKR-fb-fVp"/>
                             <constraint firstItem="YU5-6P-bnz" firstAttribute="top" secondItem="W9s-zv-hC4" secondAttribute="bottom" id="VcH-6P-NgC"/>
                             <constraint firstItem="YU5-6P-bnz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="f2W-iB-p4X"/>
-                            <constraint firstItem="HOf-0P-S94" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jLK-mE-RXr"/>
                             <constraint firstItem="YU5-6P-bnz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lcK-OD-vu3"/>
-                            <constraint firstItem="HOf-0P-S94" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mSz-aK-AkW"/>
-                            <constraint firstItem="HOf-0P-S94" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="n0j-EQ-gPZ"/>
                             <constraint firstItem="W9s-zv-hC4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nxr-xI-fVV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
-                            <outlet property="albumsSearchingIndicator" destination="HOf-0P-S94" id="zHp-jN-tzV"/>
                             <outlet property="artworkCollectionView" destination="YU5-6P-bnz" id="aWQ-pG-gaP"/>
                             <outlet property="artworkSearchBar" destination="W9s-zv-hC4" id="2RO-IH-JM3"/>
                         </connections>

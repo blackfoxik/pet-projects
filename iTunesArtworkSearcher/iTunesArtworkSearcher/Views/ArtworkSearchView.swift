@@ -10,16 +10,21 @@ import UIKit
 
 class ArtworkSearchView: UIView, UICollectionViewDelegate {
     @IBOutlet weak var artworkSearchBar: UISearchBar! 
-    
-    @IBOutlet weak var albumsSearchingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var artworkCollectionView: UICollectionView!
+    
     
     let reuseCellIdentifier = Settings.reuseCellIdentifier
     let cellImagePlaceholder = Settings.cellImagePlaceholder
+    private let sectionInsets = UIEdgeInsets(top: Settings.EdgeInsets.top,
+                                             left: Settings.EdgeInsets.left,
+                                             bottom: Settings.EdgeInsets.bottom,
+                                             right: Settings.EdgeInsets.right)
+    
+    var albumsSearchingIndicator: UIActivityIndicatorView?
     var partialDataProviderDelegate: PartialDataProviderDelegate?
     var tipsShowerDelegate: TipsShowerDelegate?
     
-    private let sectionInsets = UIEdgeInsets(top: Settings.EdgeInsets.top, left: Settings.EdgeInsets.left, bottom: Settings.EdgeInsets.bottom, right: Settings.EdgeInsets.right)
+    
     
     
     /*
@@ -33,7 +38,9 @@ class ArtworkSearchView: UIView, UICollectionViewDelegate {
 }
 
 extension ArtworkSearchView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (Settings.itemsPerRow + 1)
         let availableWidth = self.frame.width - paddingSpace
         let widthPerItem = availableWidth / Settings.itemsPerRow
@@ -47,9 +54,9 @@ extension ArtworkSearchView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-    
-    
+        
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        albumsSearchingIndicator?.isHidden = true
         if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) - Settings.TIP_OFFSET_THRESHOLD {
             tipsShowerDelegate?.showTips()
         }
@@ -60,13 +67,9 @@ extension ArtworkSearchView: UICollectionViewDelegateFlowLayout {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        //        if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-        //            let h = self.frame.size.height
-        //            albumsSearchingIndicator.bottomAnchor.constraint(
-        //                equalTo: self.topAnchor,
-        //                constant: 2 * h - h / 4).isActive = true
-        //            albumsSearchingIndicator.startAnimating()
-        //        }
+                if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+                    albumsSearchingIndicator?.isHidden = false
+                }
     }
     
 }

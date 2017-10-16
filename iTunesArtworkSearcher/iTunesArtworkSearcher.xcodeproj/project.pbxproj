@@ -15,6 +15,7 @@
 		3A7793C91F8BD4680096BADB /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7793C81F8BD4620096BADB /* placeholder.png */; };
 		3ADC44AE1F90D52800DC5B42 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC44AD1F90D52800DC5B42 /* TipsViewController.swift */; };
 		3ADC44B01F91023500DC5B42 /* TipsAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC44AF1F91023500DC5B42 /* TipsAnimator.swift */; };
+		3ADC44B21F9535E000DC5B42 /* DownloadingIndicatorReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC44B11F9535E000DC5B42 /* DownloadingIndicatorReusableView.swift */; };
 		3AFD26631F7EFBD800D87D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD26621F7EFBD800D87D45 /* AppDelegate.swift */; };
 		3AFD26651F7EFBD800D87D45 /* ArtworkSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFD26641F7EFBD800D87D45 /* ArtworkSearchViewController.swift */; };
 		3AFD26681F7EFBD800D87D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFD26661F7EFBD800D87D45 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		3A7793C81F8BD4620096BADB /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		3ADC44AD1F90D52800DC5B42 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		3ADC44AF1F91023500DC5B42 /* TipsAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsAnimator.swift; sourceTree = "<group>"; };
+		3ADC44B11F9535E000DC5B42 /* DownloadingIndicatorReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingIndicatorReusableView.swift; sourceTree = "<group>"; };
 		3AFD265F1F7EFBD800D87D45 /* iTunesArtworkSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesArtworkSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFD26621F7EFBD800D87D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AFD26641F7EFBD800D87D45 /* ArtworkSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkSearchViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		3A064FBD1F87A41100F2B9A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3ADC44B11F9535E000DC5B42 /* DownloadingIndicatorReusableView.swift */,
 				3A21A7D81F85F8A2006FCB7F /* TrackTableViewCell.swift */,
 				3A3411581F7F9A71005B2CFD /* AlbumCollectionViewCell.swift */,
 				3AFD26791F7EFFA100D87D45 /* AlbumFullInformationView.swift */,
@@ -288,6 +291,7 @@
 				3ADC44B01F91023500DC5B42 /* TipsAnimator.swift in Sources */,
 				3ADC44AE1F90D52800DC5B42 /* TipsViewController.swift in Sources */,
 				3A3411591F7F9A71005B2CFD /* AlbumCollectionViewCell.swift in Sources */,
+				3ADC44B21F9535E000DC5B42 /* DownloadingIndicatorReusableView.swift in Sources */,
 				3A34115B1F821D6E005B2CFD /* iTunes.swift in Sources */,
 				3AFD26781F7EFF3D00D87D45 /* AlbumFullInformationViewController.swift in Sources */,
 				3AFD267A1F7EFFA100D87D45 /* AlbumFullInformationView.swift in Sources */,
