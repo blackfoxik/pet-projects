@@ -46,14 +46,13 @@ class TipsAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             tipView?.transform = self.presenting ?
                 CGAffineTransform.identity : scaleTransform
             if self.presenting {
-                let size = CGSize(width: (tipView?.frame.width)! * 2 / 2.5, height: (tipView?.frame.height)! / 3)
-                tipView?.frame.size = size
+                //let size = CGSize(width: (tipView?.frame.width)! * 2 / 2.5, height: (tipView?.frame.height)! / 3)
+                //tipView?.frame.size = size
                 let center = CGPoint(x: (fromView?.frame.midX)!, y: (fromView?.frame.midY)!)
                 tipView?.center = center
             } else {
                 tipView?.center = CGPoint(x: (finalFrame?.midX)!, y: (finalFrame?.midY)!)
             }
-            
         }, completion: { _ in
             transitionContext.completeTransition(true)
             if self.presenting {

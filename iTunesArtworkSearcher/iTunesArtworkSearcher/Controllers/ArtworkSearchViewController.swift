@@ -234,7 +234,9 @@ extension ArtworkSearchViewController {
     
     //This function is called when device was rotated (for autoresize album cells)
     @objc private func rotated() {
-        artworkSearchView.artworkCollectionView.reloadData()
+        if !transition.presenting {
+            //artworkSearchView.artworkCollectionView.reloadData()
+        }
     }
     
     //This fuction checks whether is search new or not

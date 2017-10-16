@@ -132,22 +132,22 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="752" text="For more results pull up any bottom album" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB7-Ai-K7r">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ty9-lg-LjX">
-                                        <rect key="frame" x="0.0" y="200" width="320" height="260"/>
+                                        <rect key="frame" x="0.0" y="279" width="320" height="181"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="show this window again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwN-Yd-ELm">
-                                                <rect key="frame" x="0.0" y="121" width="245.5" height="18"/>
+                                                <rect key="frame" x="0.0" y="81.5" width="245.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fbp-Cj-kVL">
-                                                <rect key="frame" x="245.5" y="114.5" width="76.5" height="31"/>
+                                                <rect key="frame" x="245.5" y="75" width="76.5" height="31"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="showTipWindowAgain" label="show this window again">
                                                     <accessibilityTraits key="traits" button="YES"/>
                                                 </accessibility>
