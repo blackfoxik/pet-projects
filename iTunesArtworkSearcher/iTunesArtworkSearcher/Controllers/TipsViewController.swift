@@ -18,11 +18,6 @@ class TipsViewController: UIViewController {
         self.view.frame.size = sizeWithScaleFactor(for: self.view.frame.size)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         DispatchQueue.main.async {
@@ -37,15 +32,5 @@ class TipsViewController: UIViewController {
         let width = size.width * widthScaleFactor
         return CGSize(width: width, height: heigth)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
